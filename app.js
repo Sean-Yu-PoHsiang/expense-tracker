@@ -8,6 +8,8 @@ const app = express()
 const PORT = 3000
 
 const Record = require('./models/record.js')
+const Category = require('./models/category.js')
+const category = require('./models/category.js')
 
 //mongodb connection setting
 const MONGODB_URI = 'mongodb://localhost/expense-tracker'
@@ -39,6 +41,22 @@ app.get('/', (req, res) => {
       return records
     })
     .then(records => res.render('index', { records, totalAmount }))
+    .catch((err) => res.status(err).send(err).then(console.log(err)))
+})
+
+//route of create page
+app.get('/new', (req, res) => {
+  return Category.find()
+    .lean()
+    .then(categories => res.render('new', { categories }))
+    .catch((err) => res.status(err).send(err).then(console.log(err)))
+})
+
+//route of post new record
+app.post('/new', (req, res) => {
+  const newRecord = req.body
+  return Record.create(newRecord)
+    .then(() => res.redirect('/'))
     .catch((err) => res.status(err).send(err).then(console.log(err)))
 })
 

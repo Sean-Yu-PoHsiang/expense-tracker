@@ -1,0 +1,23 @@
+<form action="/new" method="POST">
+  <div class="form-group">
+    <label for="exampleFormControlInput1">name</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name" name="name" required>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">date</label>
+    <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="name" name="date" required>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">category</label>
+    <select class="form-control" id="exampleFormControlSelect1" name="category">
+      {{#each categories}}
+      <option>{{this.category}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">amount</label>
+    <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="name" name="amount" required>
+  </div>
+  <button type="submit">create</button>
+</form>
