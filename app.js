@@ -1,6 +1,8 @@
 //require node modules
 const express = require('express')
 const mongoose = require('mongoose')
+const exphbs = require('express-handlebars')
+const bodyParser = require('body-parser')
 
 const app = express()
 const PORT = 3000
@@ -18,9 +20,16 @@ db.once('open', () => {
   console.log('mongodb connected')
 })
 
+//set template engine
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
+app.set('view engine', 'handlebars')
+
+//set body-parser
+app.use(bodyParser.urlencoded({ extended: true }))
+
 //route of home page
 app.get('/', (req, res) => {
-  res.send('expense tracker')
+  res.render('index')
 })
 
 //server listen to localhost:3000
