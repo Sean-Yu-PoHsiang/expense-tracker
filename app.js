@@ -90,6 +90,15 @@ app.post('/edit/:id', (req, res) => {
     .catch((err) => res.status(err).send(err).then(console.log(err)))
 })
 
+//route of delete record
+app.post('/delete/:id', (req, res) => {
+  const id = req.params.id
+  return Record.findById(id)
+    .then(record => record.remove())
+    .then(() => res.redirect('/'))
+    .catch((err) => res.status(err).send(err).then(console.log(err)))
+})
+
 
 //server listen to localhost:3000
 app.listen(PORT, () => {
