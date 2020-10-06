@@ -1,0 +1,25 @@
+<form action="/edit/{{record._id}}" method="POST">
+  <div class="form-group">
+    <label for="exampleFormControlInput1">name</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name" name="name"
+      value="{{record.name}}" required>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">date</label>
+    <input type="date" class="form-control" id="exampleFormControlInput2" name="date" value="{{record.date}}" required>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">category</label>
+    <select class="form-control" id="exampleFormControlSelect3" name="category">
+      {{#each categories}}
+      <option{{#if false}}selected{{/if}}>{{this.category}}</option>
+        {{/each}}
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">amount</label>
+    <input type="number" class="form-control" id="exampleFormControlInput4" placeholder="name" name="amount"
+      value="{{record.amount}}" required>
+  </div>
+  <button type="submit">submit</button>
+</form>
