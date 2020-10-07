@@ -35,18 +35,14 @@ app.use(express.static('public'))
 
 //route of home page
 app.get('/', (req, res) => {
-  let totalAmount = 0
   return Record.find()
     .lean()
     .then(records => {
-      records.forEach(record => totalAmount += record.amount)
-      return records
-    }).then(records => {
       Category.find()
         .lean()
         .then((categories) => {
           let filterCategory = '全部'
-          return res.render('index', { records, totalAmount, categories, filterCategory })
+          return res.render('index', { records, categories, filterCategory })
         })
         .catch((err) => res.status(err).send(err).then(console.log(err)))
     })
@@ -65,14 +61,11 @@ app.get('/filter', (req, res) => {
         filteredRecords = records
       }
 
-      let totalAmount = 0
-      filteredRecords.forEach(record => totalAmount += record.amount)
-
       Category.find()
         .lean()
         .then(categories => {
 
-          return res.render('index', { records: filteredRecords, totalAmount, categories, filterCategory })
+          return res.render('index', { records: filteredRecords, categories, filterCategory })
         })
         .catch((err) => res.status(err).send(err).then(console.log(err)))
 

@@ -11,14 +11,15 @@
   </div>
 </div>
 
-<h1>total amount: {{totalAmount}}</h1>
+<h1>total amount:</h1>
+<h1 class="totalAmount"></h1>
 
 {{#each records}}
 <div>
   <span>{{this.category}}</span>
   <span>{{this.name}}</span>
   <span>{{this.date}}</span>
-  <span>{{this.amount}}</span>
+  <span class="amount">{{this.amount}}</span>
   <a href="/edit/{{this._id}}">edit</a>
   <button class="btn btn-info" type="button" data-toggle="modal" data-target="#id-{{this._id}}"
     style="display: inline;">delete</button>
@@ -46,3 +47,5 @@
 {{/each}}
 
 <a href="/new">create</a>
+
+<script src="/javascripts/index.js"></script>
