@@ -10,10 +10,11 @@
   </div>
   <div class="form-group">
     <label for="exampleFormControlSelect1">category</label>
-    <select class="form-control" id="exampleFormControlSelect3" name="category">
+    <div id="categoryData" data-category="{{record.category}}"></div>
+    <select class="form-control" id="exampleFormControlSelect3" name="category" dataset="">
       {{#each categories}}
-      <option{{#if false}}selected{{/if}}>{{this.category}}</option>
-        {{/each}}
+      <option class="selectOption">{{this.category}}</option>
+      {{/each}}
     </select>
   </div>
   <div class="form-group">
@@ -23,3 +24,5 @@
   </div>
   <button type="submit">submit</button>
 </form>
+
+<script src="/javascripts/edit.js"></script>

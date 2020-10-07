@@ -9,7 +9,6 @@ const PORT = 3000
 
 const Record = require('./models/record.js')
 const Category = require('./models/category.js')
-const category = require('./models/category.js')
 
 //mongodb connection setting
 const MONGODB_URI = 'mongodb://localhost/expense-tracker'
@@ -30,6 +29,9 @@ app.set('view engine', 'handlebars')
 
 //set body-parser
 app.use(bodyParser.urlencoded({ extended: true }))
+
+//set public file
+app.use(express.static('public'))
 
 //route of home page
 app.get('/', (req, res) => {

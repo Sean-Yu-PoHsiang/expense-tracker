@@ -7,9 +7,28 @@
   <span>{{this.date}}</span>
   <span>{{this.amount}}</span>
   <a href="/edit/{{this._id}}">edit</a>
-  <form action="/delete/{{ this._id }}" method="POST" style="display: inline;">
-    <button class="" type="submit">delete</button>
-  </form>
+  <button class="btn btn-info" type="button" data-toggle="modal" data-target="#id-{{this._id}}"
+    style="display: inline;">delete</button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="id-{{this._id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">確定要刪除？</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <form action="/delete/{{ this._id }}" method="POST" style="display: inline;">
+          <button type="submit" class="btn btn-info">Yes</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
 {{/each}}
 

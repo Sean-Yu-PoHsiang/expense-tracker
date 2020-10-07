@@ -7,7 +7,7 @@ const categoryList = [
     icon: "fas fa-home"
   },
   {
-    category: "交通旅行",
+    category: "交通出行",
     icon: "fas fa-shuttle-van"
   },
   {
