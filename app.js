@@ -120,10 +120,11 @@ app.post('/edit/:id', (req, res) => {
 
 //route of delete record
 app.post('/delete/:id', (req, res) => {
+  const category = req.query.category
   const id = req.params.id
   return Record.findById(id)
     .then(record => record.remove())
-    .then(() => res.redirect('/'))
+    .then(() => res.redirect(`/filter/?category=${category}`))
     .catch((err) => res.status(err).send(err).then(console.log(err)))
 })
 

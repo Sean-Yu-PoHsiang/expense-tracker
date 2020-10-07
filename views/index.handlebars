@@ -37,7 +37,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <form action="/delete/{{ this._id }}" method="POST" style="display: inline;">
+        <form action="/delete/{{ this._id }}?category={{this.category}}" method="POST" style="display: inline;">
           <button type="submit" class="btn btn-info">Yes</button>
         </form>
       </div>
