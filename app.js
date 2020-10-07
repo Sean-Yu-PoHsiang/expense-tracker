@@ -41,8 +41,42 @@ app.get('/', (req, res) => {
     .then(records => {
       records.forEach(record => totalAmount += record.amount)
       return records
+    }).then(records => {
+      Category.find()
+        .lean()
+        .then((categories) => {
+          let filterCategory = '全部'
+          return res.render('index', { records, totalAmount, categories, filterCategory })
+        })
+        .catch((err) => res.status(err).send(err).then(console.log(err)))
     })
-    .then(records => res.render('index', { records, totalAmount }))
+    .catch((err) => res.status(err).send(err).then(console.log(err)))
+})
+
+//route of index filter
+app.get('/filter', (req, res) => {
+  const filterCategory = req.query.category
+
+  return Record.find()
+    .lean()
+    .then(records => {
+      let filteredRecords = records.filter(record => record.category === filterCategory)
+      if (filterCategory === '全部') {
+        filteredRecords = records
+      }
+
+      let totalAmount = 0
+      filteredRecords.forEach(record => totalAmount += record.amount)
+
+      Category.find()
+        .lean()
+        .then(categories => {
+
+          return res.render('index', { records: filteredRecords, totalAmount, categories, filterCategory })
+        })
+        .catch((err) => res.status(err).send(err).then(console.log(err)))
+
+    })
     .catch((err) => res.status(err).send(err).then(console.log(err)))
 })
 
@@ -87,8 +121,7 @@ app.post('/edit/:id', (req, res) => {
       record.category = reqBody.category
       record.amount = reqBody.amount
       return record.save()
-    })
-    .then(() => res.redirect('/'))
+    }).then(() => res.redirect('/'))
     .catch((err) => res.status(err).send(err).then(console.log(err)))
 })
 

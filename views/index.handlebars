@@ -1,3 +1,16 @@
+<div class="dropdown">
+  <button class="btn btn-light border-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Filter: {{filterCategory}}
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="/filter?category=全部">全部</a>
+    {{#each categories}}
+    <a class="dropdown-item" href="/filter?category={{this.category}}">{{this.category}}</a>
+    {{/each}}
+  </div>
+</div>
+
 <h1>total amount: {{totalAmount}}</h1>
 
 {{#each records}}
