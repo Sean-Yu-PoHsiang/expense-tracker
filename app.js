@@ -124,7 +124,7 @@ app.post('/delete/:id', (req, res) => {
   const id = req.params.id
   return Record.findById(id)
     .then(record => record.remove())
-    .then(() => res.redirect(`/filter/?category=${category}`))
+    .then(() => res.redirect(`/`))
     .catch((err) => res.status(err).send(err).then(console.log(err)))
 })
 
