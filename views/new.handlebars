@@ -1,23 +1,26 @@
-<form action="/new" method="POST">
-  <div class="form-group">
-    <label for="exampleFormControlInput1">name</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name" name="name" required>
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">date</label>
-    <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="name" name="date" required>
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlSelect1">category</label>
-    <select class="form-control" id="exampleFormControlSelect1" name="category">
-      {{#each categories}}
-      <option>{{this.category}}</option>
-      {{/each}}
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">amount</label>
-    <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="name" name="amount" required>
-  </div>
-  <button type="submit">create</button>
-</form>
+<div class="container mt-3" style="max-width: 700px;">
+  <h3 class="mb-3">新增項目</h3>
+  <form action="/new" method="POST">
+    <div class="form-group">
+      <label for="name">細目</label>
+      <input type="text" class="form-control" id="name" placeholder="ex.午餐" name="name" required>
+    </div>
+    <div class="form-group">
+      <label for="date">日期</label>
+      <input type="date" class="form-control" id="date" placeholder="" name="date" required>
+    </div>
+    <div class="form-group">
+      <label for="category">類別</label>
+      <select class="form-control" id="category" name="category">
+        {{#each categories}}
+        <option value="{{this.category}}|{{this.icon}}">{{this.category}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="amount">金額</label>
+      <input type="number" class="form-control" id="amount" placeholder="" name="amount" required>
+    </div>
+    <button class="btn btn-outline-info" type="submit">新增</button>
+  </form>
+</div>

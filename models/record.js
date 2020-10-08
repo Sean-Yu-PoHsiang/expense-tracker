@@ -14,6 +14,10 @@ const recordSchema = new Schema({
     type: String,
     required: true
   },
+  icon: {
+    type: String,
+    required: true
+  },
   amount: {
     type: Number,
     required: true

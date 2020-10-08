@@ -84,6 +84,10 @@ app.get('/new', (req, res) => {
 //route of post new record to data-base
 app.post('/new', (req, res) => {
   const newRecord = req.body
+  let temp = req.body.category.split('|')
+  newRecord.category = temp[0]
+  newRecord.icon = temp[1]
+
   return Record.create(newRecord)
     .then(() => res.redirect('/'))
     .catch((err) => res.status(err).send(err).then(console.log(err)))
@@ -107,11 +111,14 @@ app.get('/edit/:id', (req, res) => {
 app.post('/edit/:id', (req, res) => {
   const id = req.params.id
   const reqBody = req.body
+  let temp = req.body.category.split('|')
+
   return Record.findById(id)
     .then(record => {
       record.name = reqBody.name
       record.date = reqBody.date
-      record.category = reqBody.category
+      record.category = temp[0]
+      record.icon = temp[1]
       record.amount = reqBody.amount
       return record.save()
     }).then(() => res.redirect('/'))
@@ -120,7 +127,7 @@ app.post('/edit/:id', (req, res) => {
 
 //route of delete record
 app.post('/delete/:id', (req, res) => {
-  const category = req.query.category
+  const filterCategory = req.query.category
   const id = req.params.id
   return Record.findById(id)
     .then(record => record.remove())
