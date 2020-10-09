@@ -2,7 +2,7 @@
   <h3 class="mb-3">修改支出項目</h3>
   <span>*為必填</span>
   <hr>
-  <form action="/edit/{{record._id}}" method="POST">
+  <form action="/edit/{{record._id}}?_method=PUT" method="POST">
     <div class="form-group">
       <label for="name">細目*</label>
       <input type="text" class="form-control" id="name" placeholder="ex.午餐" name="name" value="{{record.name}}"

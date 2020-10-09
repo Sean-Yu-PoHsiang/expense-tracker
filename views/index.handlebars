@@ -81,7 +81,8 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-info" data-dismiss="modal">Cancel</button>
-          <form action="/delete/{{ this._id }}?category={{this.category}}" method="POST" style="display: inline;">
+          <form action="/delete/{{ this._id }}?category={{this.category}}&_method=DELETE" method="POST"
+            style="display: inline;">
             <button type="submit" class="btn btn-outline-danger">Yes</button>
           </form>
         </div>
