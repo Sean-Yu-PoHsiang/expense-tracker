@@ -31,11 +31,11 @@
     <div class="col-4">
       <h5>細目</h5>
     </div>
-    <div class="col-2">
-      <h5>金額</h5>
+    <div class="col-1">
+
     </div>
-    <div class="col-2">
-      <h5>日期</h5>
+    <div class="col-3">
+      <h5>金額</h5>
     </div>
     <div class="col-2">
       <span></span>
@@ -47,21 +47,22 @@
       <i class="{{this.icon}} fa-lg w-25 d-block"></i>
       <span class="d-none d-xl-block">{{this.category}}</span>
     </div>
-    <div class="col-4 d-flex align-items-center">
+    <div class="col-4 d-flex flex-column justify-content-center">
       <span>{{this.name}}</span>
-    </div>
-    <div class="col-2 d-flex align-items-center">
-      <span class="amount">{{this.amount}}</span>
-    </div>
-    <div class="col-2 d-flex align-items-center">
       <span>{{this.date}}</span>
     </div>
-    <div class="col-2 d-flex justify-content-end">
-      <a class="btn btn-outline-info ml-2 d-flex" href="/edit/{{this._id}}">
+    <div class="col-1 d-flex align-items-center">
+
+    </div>
+    <div class="col-3 d-flex align-items-center">
+      <span class="amount">{{this.amount}}</span>
+    </div>
+    <div class="col-2 d-flex justify-content-end align-items-center">
+      <a class="btn btn-outline-info ml-2 d-flex" style="height: 45px;" href="/edit/{{this._id}}">
         <i class="fas fa-pencil-alt align-self-center"></i>
       </a>
       <button class="btn btn-outline-danger ml-2" type="button" data-toggle="modal" data-target="#id-{{this._id}}"
-        style="display: inline;">
+        style="display: inline; height: 45px;">
         <i class="fas fa-trash-alt"></i>
       </button>
     </div>
