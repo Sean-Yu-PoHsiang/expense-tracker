@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row mt-3 align-items-center">
     <div class="col-2">
-      <a class="btn btn-outline-info mb-2" href="/new"><i class="fas fa-plus"></i></a>
+      <a class="btn btn-outline-info mb-2" href="/CRUD/new"><i class="fas fa-plus"></i></a>
     </div>
     <div class="col-8 d-flex">
       <h3>{{filterCategory}}總花費:</h3>
@@ -58,7 +58,7 @@
       <span class="amount">{{this.amount}}</span>
     </div>
     <div class="col-2 d-flex justify-content-end align-items-center">
-      <a class="btn btn-outline-info ml-2 d-flex" style="height: 45px;" href="/edit/{{this._id}}">
+      <a class="btn btn-outline-info ml-2 d-flex" style="height: 45px;" href="/CRUD/edit/{{this._id}}">
         <i class="fas fa-pencil-alt align-self-center"></i>
       </a>
       <button class="btn btn-outline-danger ml-2" type="button" data-toggle="modal" data-target="#id-{{this._id}}"
@@ -81,7 +81,7 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-info" data-dismiss="modal">Cancel</button>
-          <form action="/delete/{{ this._id }}?category={{this.category}}&_method=DELETE" method="POST"
+          <form action="/CRUD/delete/{{ this._id }}?category={{this.category}}&_method=DELETE" method="POST"
             style="display: inline;">
             <button type="submit" class="btn btn-outline-danger">Yes</button>
           </form>
