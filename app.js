@@ -7,13 +7,10 @@ const methodOverride = require('method-override')
 
 const routes = require('./routes')
 const app = express()
-const PORT = 3000
-
-const Record = require('./models/record.js')
-const Category = require('./models/category.js')
+const PORT = process.env.PORT || 3000
 
 //mongodb connection setting
-const MONGODB_URI = 'mongodb://localhost/expense-tracker'
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/expense-tracker'
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 const db = mongoose.connection
 //connection error
