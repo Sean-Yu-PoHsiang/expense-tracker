@@ -13,7 +13,7 @@ router.get('/new', (req, res) => {
 })
 
 //route of post new record to data-base
-router.post('/new', (req, res) => {
+router.post('/', (req, res) => {
   const newRecord = req.body
   let temp = req.body.category.split('|')
   newRecord.category = temp[0]
@@ -25,7 +25,7 @@ router.post('/new', (req, res) => {
 })
 
 //route of edit page
-router.get('/edit/:id', (req, res) => {
+router.get('/:id/edit', (req, res) => {
   const id = req.params.id
   return Category.find()
     .lean()
@@ -39,7 +39,7 @@ router.get('/edit/:id', (req, res) => {
 })
 
 //route of post edit 
-router.put('/edit/:id', (req, res) => {
+router.put('/:id', (req, res) => {
   const id = req.params.id
   const reqBody = req.body
   let temp = req.body.category.split('|')
@@ -57,7 +57,7 @@ router.put('/edit/:id', (req, res) => {
 })
 
 //route of delete record
-router.delete('/delete/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
   const filterCategory = req.query.category
   const id = req.params.id
   return Record.findById(id)

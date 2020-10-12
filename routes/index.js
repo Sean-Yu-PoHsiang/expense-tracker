@@ -4,7 +4,7 @@ const router = express.Router()
 const home = require('./modules/home.js')
 router.use('/', home)
 
-const CRUD = require('./modules/CRUD.js')
-router.use('/CRUD', CRUD)
+const records = require('./modules/records.js')
+router.use('/records', records)
 
 module.exports = router
